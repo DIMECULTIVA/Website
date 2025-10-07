@@ -167,7 +167,7 @@ export default function App() {
             </div>
             <div className="lg:col-span-4 rounded-2xl border border-zinc-200 bg-white shadow-sm p-6">
               <h3 className="text-lg font-semibold">Request a Quote</h3>
-              <form name="quote" method="POST" data-netlify="true" className="mt-4 grid gap-4">
+                          <form name="quote" method="POST" data-netlify="true" action="/thank-you" className="mt-4 grid gap-4">
                 <input type="hidden" name="form-name" value="quote" />
                 <div className="grid sm:grid-cols-2 gap-4">
                   <input name="name" placeholder="Full name" className="px-3 py-2 rounded-xl border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-zinc-900" />
