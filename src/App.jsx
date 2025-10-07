@@ -116,6 +116,19 @@ function QuoteForm() {
   )
 }
 
+function FooterLinks() {
+    return (
+        <div className="flex flex-wrap items-center gap-3 text-sm text-zinc-600">
+            <a href="/bbbee-certificate.pdf" target="_blank" rel="noopener" className="hover:underline">
+                B-BBEE Certificate (PDF)
+            </a>
+            <span className="text-zinc-400">•</span>
+            <a href="/privacy.html" className="hover:underline">Privacy Policy</a>
+            <span className="text-zinc-400">•</span>
+            <a href="/terms.html" className="hover:underline">Terms &amp; Conditions</a>
+        </div>
+    );
+}
 export default function App() {
   return (
     <div className="min-h-screen bg-zinc-100 text-zinc-900">
@@ -293,12 +306,17 @@ export default function App() {
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-zinc-200 bg-white">
-        <Section className="py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-zinc-600">© {new Date().getFullYear()} DIMECULTIVA (PTY) LTD. All rights reserved.</p>
-          <div className="text-xs text-zinc-500">Proudly South African • Established 2023</div>
-        </Section>
-      </footer>
+          <footer className="border-t border-zinc-200 bg-white">
+              <Section className="py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                  <div>
+                      <p className="text-sm text-zinc-600">
+                          © {new Date().getFullYear()} DIMECULTIVA (PTY) LTD. All rights reserved.
+                      </p>
+                      <div className="text-xs text-zinc-500">Proudly South African • Established 2023</div>
+                  </div>
+                  <FooterLinks />
+              </Section>
+          </footer>
 
       <FloatingContact />
     </div>
