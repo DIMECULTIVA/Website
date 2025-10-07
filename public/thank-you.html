@@ -5,16 +5,8 @@
   <title>Thank You - DimeCultiva</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      background: #0a0a0a;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
+    body { background: #0a0a0a; color: #fff; display: flex; align-items: center;
+           justify-content: center; height: 100vh; font-family: Arial, sans-serif; text-align: center; margin: 0; }
     a { color: #fff; text-decoration: underline; }
   </style>
 </head>
@@ -24,5 +16,16 @@
     <p>Your request has been submitted successfully.<br>We’ll get back to you shortly.</p>
     <p><a href="/">← Back to home</a></p>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script>
+    (function go() {
+      const end = Date.now() + 800;
+      (function frame() {
+        confetti({ particleCount: 30, spread: 60, origin: { y: 0.6 } });
+        if (Date.now() < end) requestAnimationFrame(frame);
+      })();
+    })();
+  </script>
 </body>
 </html>
