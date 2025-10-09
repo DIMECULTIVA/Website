@@ -1,61 +1,57 @@
-<!doctype html>
-<html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DIMECULTIVA</title>
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <meta name="description" content="DIMECULTIVA supplies quality PPE, builders hardware, industrial and safety equipment across South Africa. Reliable, competitively priced procurement.">
+
+    <!-- Basic SEO -->
+    <title>DIMECULTIVA | PPE, Hardware, Industrial & Safety Supplies</title>
+    <meta name="description" content="DIMECULTIVA supplies quality PPE, builders hardware, industrial and safety equipment across South Africa. Reliable, competitively priced procurement." />
+    <link rel="canonical" href="https://dimecu.netlify.app/" />
+    <meta name="google-site-verification" content="1boICtNjTrUGVa0GXPq2DxyeRytgvvzp8aEWawd6HvY" />
+
+    <!-- Open Graph / Social -->
     <meta property="og:title" content="DIMECULTIVA — PPE • Hardware • Industrial • Safety" />
     <meta property="og:description" content="Reliable supply for safer, better-equipped workplaces." />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dimecu.netlify.app/" />
+    <!-- If this image exists in /public, keep it. Otherwise remove or replace. -->
     <meta property="og:image" content="/og-image.png" />
-    <meta property="og:url" content="https://dimecultiva.netlify.app/" />
+
     <meta name="twitter:card" content="summary_large_image" />
+    <!-- Optional:
+    <meta name="twitter:site" content="@yourhandle" />
+    <meta name="twitter:image" content="/og-image.png" />
+    -->
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
     <!-- Organization Schema -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "DIMECULTIVA (PTY) LTD",
-      "url": "https://dimecultiva.netlify.app/",
-      "logo": "https://dimecultiva.netlify.app/favicon.svg",
-      "email": "mailto:dimecultiva@gmail.com",
-      "telephone": "+27 66 330 0304",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "1561 Riviera Place",
-        "addressLocality": "Centurion, Pretoria",
-        "postalCode": "0157",
-        "addressCountry": "ZA"
-      }
-    }
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "DIMECULTIVA (PTY) LTD",
+          "url": "https://dimecu.netlify.app/",
+          "logo": "https://dimecu.netlify.app/favicon.svg",
+          "email": "mailto:dimecultiva@gmail.com",
+          "telephone": "+27 66 330 0304",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "1561 Riviera Place",
+            "addressLocality": "Centurion, Pretoria",
+            "postalCode": "0157",
+            "addressCountry": "ZA"
+          }
+        }
     </script>
 
-    <!-- Google Analytics 4 (replace G-XXXXXXXXXX with your ID) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <!-- Google Analytics 4 (use your real GA ID in BOTH places) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZDS6X328BC"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
-      // simple click tracking helper
-      window.track = function(name, params){ try{ if(window.gtag) gtag('event', name, params||{}); }catch(e){} }
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-ZDS6X328BC');
+        // simple click tracking helper
+        window.track = function (name, params) { try { if (window.gtag) gtag('event', name, params || {}); } catch (e) { } }
     </script>
-  </head>
-  <body class="bg-zinc-100">
-    <div id="root"></div>
-
-    <!-- Hidden static form so Netlify detects it at build time -->
-    <form name="quote" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="name" />
-      <input type="email" name="email" />
-      <input type="text" name="company" />
-      <input type="text" name="phone" />
-      <textarea name="message"></textarea>
-    </form>
-
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+</head>
