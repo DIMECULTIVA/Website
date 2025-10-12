@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://dimecu.netlify.app/</loc></url>
-  <url><loc>https://dimecu.netlify.app/#about</loc></url>
-  <url><loc>https://dimecu.netlify.app/#services</loc></url>
-  <url><loc>https://dimecu.netlify.app/#projects</loc></url>
-  <url><loc>https://dimecu.netlify.app/#team</loc></url>
-  <url><loc>https://dimecu.netlify.app/#contact</loc></url>
+  <url><loc>https://www.dimecultiva.co.za/</loc><lastmod>2025-10-12</lastmod><priority>1.0</priority></url>
+  <url><loc>https://www.dimecultiva.co.za/privacy.html</loc><lastmod>2025-10-12</lastmod><priority>0.4</priority></url>
+  <url><loc>https://www.dimecultiva.co.za/terms.html</loc><lastmod>2025-10-12</lastmod><priority>0.4</priority></url>
+  <url><loc>https://www.dimecultiva.co.za/thank-you.html</loc><lastmod>2025-10-12</lastmod><priority>0.2</priority></url>
 </urlset>
