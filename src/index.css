@@ -2,9 +2,90 @@
 @tailwind components;
 @tailwind utilities;
 
-html { scroll-behavior: smooth; }
-
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+/* Smooth anchor scrolling */
+html {
+    scroll-behavior: smooth;
 }
+
+/* ---------- Base + Theme ---------- */
+@layer base {
+    body {
+        @apply bg-zinc-950 text-zinc-100 antialiased;
+    }
+
+    ::selection {
+        @apply bg-emerald-400/30 text-white;
+    }
+}
+
+/* ---------- Components (Glass, Buttons, Cards) ---------- */
+@layer components {
+    /* Frosted glass container */
+    .glass {
+        @apply rounded-2xl bg-white/10 backdrop-blur-xl ring-1 ring-white/15 shadow-xl;
+    }
+
+    /* Stronger glass border/shadow if you need more pop */
+    .glass-border {
+        @apply ring-1 ring-white/15;
+        box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+
+    /* Primary CTA (emerald) */
+    .btn-primary {
+        @apply inline-flex items-center justify-center px-4 py-2 rounded-2xl bg-emerald-500 text-zinc-950 font-semibold hover:bg-emerald-400 transition;
+    }
+
+    /* Secondary (light) CTA */
+    .btn-secondary {
+        @apply inline-flex items-center justify-center px-4 py-2 rounded-2xl bg-white text-zinc-900 font-medium hover:bg-zinc-100 transition;
+    }
+
+    /* Subtle lift on hover for cards */
+    .card-hover {
+        @apply transition duration-200 ease-out hover:-translate-y-0.5 hover:shadow-2xl;
+    }
+
+    /* Hero background accents (emerald + lime radial glows) */
+    .hero-bg {
+        background-image: radial-gradient(60rem 40rem at 20% 10%, rgba(16,185,129,0.15), transparent 50%), radial-gradient(40rem 30rem at 100% 0%, rgba(132,204,22,0.15), transparent 50%);
+    }
+}
+
+/* ---------- Utilities ---------- */
+@layer utilities {
+    /* Gradient text (for headings if needed) */
+    .text-gradient {
+        background: linear-gradient(90deg, #34d399, #a3e635);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    /* Consistent page padding container if you want to use it */
+    .container-px {
+        @apply px-4 sm:px-6 lg:px-8;
+    }
+}
+
+/* ---------- Marquee (kept from your file, plus helpers) ---------- */
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Use .marquee on a wrapper and put content in a child div */
+.marquee {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+    .marquee > div {
+        display: inline-block;
+        animation: marquee 30s linear infinite;
+    }

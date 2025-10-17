@@ -1,44 +1,54 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <!-- Basics -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>DIMECULTIVA — PPE, Hardware, Industrial & Safety Supply</title>
-    <meta name="description" content="DIMECULTIVA supplies PPE, builders hardware, industrial and safety equipment to construction, mining, education and public services across South Africa." />
+
+    <!-- SEO -->
+    <title>DIMECULTIVA — Waste Management, Recycling & Compliance</title>
+    <meta name="description" content="DIMECULTIVA provides end-to-end waste management: scheduled waste collection, recycling, skips & bins, hazardous handling and compliance documentation across South Africa." />
     <link rel="canonical" href="https://www.dimecultiva.co.za/" />
+    <meta name="theme-color" content="#10b981" />
+
+    <!-- Icons / PWA -->
     <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <meta name="theme-color" content="#0a0a0a" />
     <link rel="manifest" href="/manifest.webmanifest" />
 
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.dimecultiva.co.za/" />
-    <meta property="og:title" content="DIMECULTIVA — Reliable Supplier for Safer, Better‑Equipped Workplaces" />
-    <meta property="og:description" content="Quality-assured PPE, builders hardware, industrial and safety equipment. Fast quotes. Nationwide delivery." />
+    <meta property="og:title" content="DIMECULTIVA — Waste Management, Recycling & Compliance" />
+    <meta property="og:description" content="Scheduled collection, recycling and compliance reporting. Safer, cleaner operations." />
     <meta property="og:image" content="https://www.dimecultiva.co.za/og-image.png" />
 
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="DIMECULTIVA — Reliable Supplier for Safer, Better‑Equipped Workplaces" />
-    <meta name="twitter:description" content="Quality-assured PPE, builders hardware, industrial and safety equipment." />
+    <meta name="twitter:title" content="DIMECULTIVA — Waste Management, Recycling & Compliance" />
+    <meta name="twitter:description" content="Scheduled collection, recycling and compliance reporting. Safer, cleaner operations." />
     <meta name="twitter:image" content="https://www.dimecultiva.co.za/og-image.png" />
 
+    <!-- Google Search Console (keep your token or replace if needed) -->
     <meta name="google-site-verification" content="u9J3V2Fv_q7z38EvVCVPI844_6Kf2sdBZmuvr7iOz6E" />
 
+    <!-- Google Analytics 4 (fixed: both places use the same ID) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZD56X328BC"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-        gtag('config', 'G-ZDS6X328BC');
+        gtag('config', 'G-ZD56X328BC');
     </script>
 
+    <!-- JSON-LD: Organization + Website (fixed @id URLs) -->
     <script type="application/ld+json">
-          {
+        {
           "@context": "https://schema.org",
           "@graph": [
             {
               "@type": "Organization",
-              "@id": "https://www.dimecultiva.co.za#org",
+              "@id": "https://www.dimecultiva.co.za/#org",
               "name": "DIMECULTIVA (PTY) LTD",
               "url": "https://www.dimecultiva.co.za/",
               "email": "mailto:dimecultiva@gmail.com",
@@ -55,10 +65,10 @@
             },
             {
               "@type": "WebSite",
-              "@id": "https://www.dimecultiva.co.za#website",
+              "@id": "https://www.dimecultiva.co.za/#website",
               "url": "https://www.dimecultiva.co.za/",
               "name": "DIMECULTIVA",
-              "publisher": { "@id": "https://www.dimecultiva.co.za#org" },
+              "publisher": { "@id": "https://www.dimecultiva.co.za/#org" },
               "potentialAction": {
                 "@type": "SearchAction",
                 "target": "https://www.dimecultiva.co.za/?q={search_term_string}",
@@ -70,7 +80,10 @@
     </script>
 </head>
 <body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
+    <!-- React mounts here -->
+    <div id="root"></div>
+
+    <!-- Vite entry (loads your React app) -->
+    <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
