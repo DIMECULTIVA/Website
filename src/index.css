@@ -21,3 +21,9 @@ html { scroll-behavior: smooth; }
 }
 @layer utilities { .container-px { @apply px-4 sm:px-6 lg:px-8; } }
 @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@supports (padding: env(safe-area-inset-left)) {
+    body {
+        padding-left: max(env(safe-area-inset-left), 0px);
+        padding-right: max(env(safe-area-inset-right), 0px);
+    }
+}

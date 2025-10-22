@@ -1,64 +1,192 @@
+// src/components/Intro.jsx
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { Link } from "react-router-dom";
 
-export default function Intro() {
-  const rocket = useAnimation();
-  const hello = useAnimation();
-  const rope = useAnimation();
-  const menu = useAnimation();
-
-  useEffect(() => {
-    (async () => {
-      await hello.start({ opacity: [0,1], filter: ["blur(10px)","blur(0px)"], y: [20,0], transition: { duration: 0.9, ease: "easeOut" } });
-      rocket.start({ y: ["20vh","-35vh"], rotate: [-6,-2], transition: { duration: 1.6, ease: [0.2,0.8,0.2,1] } });
-      hello.start({ opacity: [1,0], filter: ["blur(0px)","blur(14px)"], scale: [1,1.08,0.96,0.6], transition: { duration: 0.75, ease: "easeOut" } });
-      rope.start({ opacity: [0,1], height: ["0%","40%"], transition: { duration: 0.5, ease: "easeOut" } });
-      await menu.start({ opacity: [0,1], y: [20,0], transition: { duration: 0.5, ease: "easeOut", delay: 0.05 } });
-    })();
-  }, []);
-
-  return (
-    <div className="relative min-h-screen overflow-hidden">
-      <div className="absolute inset-0 hero-bg" />
-      <motion.div className="absolute inset-0 flex items-center justify-center" initial={{ opacity: 0 }} animate={hello}>
-        <div className="select-none text-6xl sm:text-7xl md:text-8xl font-extrabold tracking-tight text-white/90 drop-shadow-[0_10px_40px_rgba(16,185,129,.25)]">Hello</div>
-      </motion.div>
-      <motion.div className="absolute left-1/2 top-[58%] -translate-x-1/2 z-10" initial={{ y: "20vh", rotate: -6 }} animate={rocket}>
-        <Rocket />
-      </motion.div>
-      <motion.div className="absolute left-1/2 top-[22%] -translate-x-1/2 w-px bg-white/40" style={{ borderRadius: 1 }} initial={{ opacity: 0, height: "0%" }} animate={rope} />
-      <div className="absolute bottom-6 w-full text-center text-sm text-zinc-400">Tap a service to continue</div>
-      <motion.div className="absolute left-1/2 top-[26%] -translate-x-1/2 w-[92%] max-w-xl glass p-4 sm:p-5" initial={{ opacity: 0, y: 20 }} animate={menu}>
-        <div className="grid grid-cols-2 gap-3 sm:gap-4">
-          <MenuButton label="Waste Management" to="/service/waste-management" />
-          <MenuButton label="Industrial Equipment" to="/service/industrial-equipment" />
-          <MenuButton label="PPE" to="/service/ppe" />
-          <MenuButton label="Stationery" to="/service/stationery" />
-          <Link className="col-span-2 btn-primary mt-1 text-center" to="/services">Explore Services</Link>
-        </div>
-      </motion.div>
-    </div>
-  );
-}
-
+/**
+ * Small reusable button styled like a glass chip.
+ */
 function MenuButton({ label, to }) {
-  return (<Link to={to} className="glass card-hover text-center py-3 rounded-xl text-sm sm:text-base">{label}</Link>);
+    return (
+        <Link
+            to={to}
+            className="block rounded-2xl px-4 py-3 text-center font-medium text-white/90
+                 backdrop-blur-xl bg-white/10 hover:bg-white/16 transition
+                 border border-white/15 shadow-[0_8px_24px_rgba(0,0,0,.25)]"
+        >
+            {label}
+        </Link>
+    );
 }
 
-function Rocket() {
-  return (
-    <svg width="80" height="80" viewBox="0 0 64 64" className="drop-shadow-2xl">
-      <defs>
-        <linearGradient id="r1" x1="0" x2="1">
-          <stop offset="0%" stopColor="#a3e635" /><stop offset="100%" stopColor="#10b981" />
-        </linearGradient>
-      </defs>
-      <motion.path d="M32 52 C26 58, 38 58, 32 64" fill="url(#r1)" initial={{ opacity: 0.7, scaleY: 0.6 }} animate={{ opacity: [0.8,0.3,0.8], scaleY: [0.7,1,0.7] }} transition={{ duration: 0.7, repeat: Infinity }} />
-      <path d="M32 8 L42 28 L32 24 L22 28 Z" fill="#fff" opacity=".9" />
-      <circle cx="32" cy="20" r="4" fill="#111" />
-      <path d="M22 28 L16 36 L26 30 Z" fill="#a3e635" />
-      <path d="M42 28 L48 36 L38 30 Z" fill="#10b981" />
-    </svg>
-  );
+/**
+ * Simple inline rocket icon so we don’t rely on external assets.
+ */
+function RocketIcon({ className = "h-6 w-6" }) {
+    return (
+        <svg viewBox="0 0 48 48" className={className} aria-hidden="true">
+            <defs>
+                <linearGradient id="rGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stopColor="#FFFFFF" />
+                    <stop offset="1" stopColor="#B3E5FC" />
+                </linearGradient>
+            </defs>
+            {/* body */}
+            <path
+                d="M30.5 6.5c6.4 6.4 7.1 18.3 1.5 23.9l-5.7 5.7c-5.6 5.6-17.5 4.9-23.9-1.5c6.4-6.4 7.9-16.6 13.5-22.2l5.7-5.7c1.4-1.4 3.5-1.4 4.9 0z"
+                fill="url(#rGrad)"
+                stroke="rgba(255,255,255,.55)"
+                strokeWidth="1.2"
+            />
+            {/* window */}
+            <circle cx="27.5" cy="14.5" r="3.2" fill="#0EA5E9" />
+            {/* fins */}
+            <path d="M15 30l6 3-3 6-6-3z" fill="#ef4444" opacity=".9" />
+            {/* fire */}
+            <path d="M21 39c3 4 8 4 11 0-4 1-7 0-11 0z" fill="#f59e0b" />
+        </svg>
+    );
+}
+
+/**
+ * Intro screen with:
+ *  - Cloudy "Hello" that fades/evaporates
+ *  - Center vertical rope
+ *  - Rocket launching up, then menu appears
+ */
+export default function Intro() {
+    const hello = useAnimation();
+    const rocket = useAnimation();
+    const menu = useAnimation();
+    const hint = useAnimation();
+
+    useEffect(() => {
+        (async () => {
+            // 1) "Hello" appears then fades like clouds
+            await hello.start({
+                opacity: [0, 1, 0.92, 0.85, 0.7, 0.4, 0],
+                filter: [
+                    "blur(16px)",
+                    "blur(10px)",
+                    "blur(12px)",
+                    "blur(18px)",
+                    "blur(24px)",
+                    "blur(30px)",
+                    "blur(40px)",
+                ],
+                transition: { duration: 2.2, ease: "easeOut" },
+            });
+
+            // 2) Rocket lifts off up the rope
+            await rocket.start({
+                y: ["40vh", "22vh", "6vh", "-8vh", "-22vh", "-36vh"],
+                scale: [0.9, 1, 1.04, 1.02, 1],
+                rotate: [0, -1, 1, 0],
+                transition: { duration: 1.6, ease: "easeInOut" },
+            });
+
+            // 3) Menu glides in (as if pulled by the rocket)
+            await menu.start({
+                opacity: [0, 1],
+                y: [18, 0],
+                transition: { duration: 0.55, ease: "easeOut" },
+            });
+
+            // 4) Hint fades in
+            hint.start({
+                opacity: [0, 1],
+                transition: { duration: 0.6, delay: 0.1 },
+            });
+        })();
+    }, []);
+
+    return (
+        <main
+            className="relative min-h-[100svh] overflow-hidden
+                 bg-gradient-to-br from-[#0A0F10] via-[#0F1F1E] to-[#0A0F10] text-white"
+        >
+            {/* Subtle noise / vignette overlay */}
+            <div className="pointer-events-none absolute inset-0 opacity-[.08] mix-blend-overlay bg-[radial-gradient(1000px_500px_at_50%_-200px,rgba(255,255,255,.12)_0%,transparent_60%)]" />
+
+            {/* Center rope */}
+            <div
+                className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px
+                   bg-gradient-to-b from-transparent via-white/40 to-transparent"
+            />
+
+            {/* Rocket on the rope */}
+            <motion.div
+                className="absolute left-1/2 -translate-x-1/2"
+                initial={{ y: "40vh", opacity: 1 }}
+                animate={rocket}
+            >
+                <div className="translate-y-[-28px]">
+                    <RocketIcon className="h-10 w-10 drop-shadow-[0_4px_16px_rgba(255,255,255,.35)]" />
+                </div>
+            </motion.div>
+
+            {/* "Hello" cloudy text */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={hello}
+                className="absolute left-1/2 top-[22vh] -translate-x-1/2 select-none"
+            >
+                <div
+                    className="text-[12vw] sm:text-7xl font-extrabold tracking-tight"
+                    style={{
+                        background:
+                            "radial-gradient(1000px 320px at 50% 40%, rgba(255,255,255,.95), rgba(255,255,255,.0))",
+                        WebkitBackgroundClip: "text",
+                        color: "transparent",
+                        textShadow:
+                            "0 10px 40px rgba(255,255,255,.35), 0 0 180px rgba(255,255,255,.25)",
+                    }}
+                >
+                    Hello
+                </div>
+            </motion.div>
+
+            {/* MENU — perfectly centered across all viewports */}
+            <div className="absolute top-[26svh] left-0 right-0 px-4">
+                <div className="mx-auto max-w-xl">
+                    <motion.div
+                        className="rounded-3xl border border-white/15 bg-white/8 backdrop-blur-xl p-4 sm:p-5 shadow-[0_20px_60px_rgba(0,0,0,.35)]"
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={menu}
+                    >
+                        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                            <MenuButton
+                                label="Waste Management"
+                                to="/service/waste-management"
+                            />
+                            <MenuButton
+                                label="Industrial Equipment"
+                                to="/service/industrial-equipment"
+                            />
+                            <MenuButton label="PPE" to="/service/ppe" />
+                            <MenuButton label="Stationery" to="/service/stationery" />
+
+                            <Link
+                                to="/services"
+                                className="col-span-2 mt-1 block rounded-2xl px-4 py-3 text-center font-semibold
+                           bg-emerald-500/90 hover:bg-emerald-500 text-black
+                           border border-emerald-400/70 shadow-[0_8px_24px_rgba(16,185,129,.45)] transition"
+                            >
+                                Explore Services
+                            </Link>
+                        </div>
+                    </motion.div>
+                </div>
+            </div>
+
+            {/* Bottom hint */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={hint}
+                className="pointer-events-none absolute inset-x-0 bottom-[calc(env(safe-area-inset-bottom,0px)+18px)] text-center text-sm text-white/60"
+            >
+                Tap a service to continue
+            </motion.div>
+        </main>
+    );
 }
