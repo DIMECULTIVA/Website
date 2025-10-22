@@ -1,6 +1,6 @@
 {
-  "name": "dimecultiva-website",
-  "version": "1.2.0",
+  "name": "dimecultiva-rocket-glass",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,16 +9,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "framer-motion": "^11.2.10",
-    "lucide-react": "^0.441.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "framer-motion": "^11.3.31",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.26.2"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.1",
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.41",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
     "tailwindcss": "^3.4.10",
-    "vite": "^5.4.10"
+    "vite": "^5.4.10",
+    "@vitejs/plugin-react": "^4.3.1"
   }
 }

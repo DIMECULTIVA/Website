@@ -1,5 +1,4 @@
-
-[build]
+﻿[build]
   command = "npm run build"
   publish = "dist"
 
@@ -7,25 +6,3 @@
   from = "/*"
   to = "/index.html"
   status = 200
-
-[[redirects]]
-  from = "/*"
-  to = "https://www.dimecultiva.co.za/:splat"
-  status = 301
-  force = true
-  conditions = { Host = ["dimecultiva.co.za"] }
-
-[[redirects]]
-  from = "/privacy"
-  to = "/privacy.html"
-  status = 301
-
-[[redirects]]
-  from = "/terms"
-  to = "/terms.html"
-  status = 301
-
-[[redirects]]
-  from = "/thank-you"
-  to = "/thank-you.html"
-  status = 301
